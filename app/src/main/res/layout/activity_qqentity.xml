@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#aa000000">
+
+    <LinearLayout
+        android:id="@+id/ll_mask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_qq_login_mask_bg"
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingTop="30dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="30dp"
+        android:transitionName="share_element">
+
+        <LinearLayout
+            android:id="@+id/ll_qq_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/login_button_qq"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_qq"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pb"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center_horizontal"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/loading_drawable"
+            android:indeterminateOnly="true"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</RelativeLayout>

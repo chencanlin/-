@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary"
+              android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp">
+
+        <ImageView
+            android:id="@+id/iv_bg_wall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_bg_wall"
+            android:contentDescription="@string/app_name"
+            android:visibility="invisible">
+        </ImageView>
+
+        <com.ccl.yuedu.ui.widget.RoundRectImageView
+            android:id="@+id/iv_main"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_2"
+            android:transitionName="main_img"
+            app:roundHeight="6dp"
+            app:roundWidth="6dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:text="@string/login_subtitle"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_login_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/login_select_logintype"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_login_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_qq_placeholder"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/shape_login_icon_bg"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/login_button_qq"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/iv_login_qq"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/shape_login_icon_bg"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/login_button_qq"
+                android:transitionName="share_element"
+                />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_login_wechat"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/shape_login_icon_bg"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/login_button_wechat"/>
+
+        <ImageView
+            android:id="@+id/iv_login_weibo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/shape_login_icon_bg"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/login_button_weibo"/>
+
+    </LinearLayout>
+
+</LinearLayout>

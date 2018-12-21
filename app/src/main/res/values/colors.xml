@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF5722</color>
+    <color name="colorPrimaryDark">#E64A19</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="common_mask_bg_color">#4CAF50</color>
+    <color name="colorBluePrimary">#2196F3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="navigation_icon_color">#707070</color>
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">yuedu</string>
+    <string name="app_name_chinese">悦读</string>
+    <string name="app_intro">书海洗澡，静享精华</string>
+    <!--LoginActivity-->
+    <string name="login_subtitle">静享读书的愉悦</string>
+    <string name="login_qq">QQ登录</string>
+    
+    <!--MainActivity-->
+    <string name="main_intro">简介：%1$s</string>
+</resources>
