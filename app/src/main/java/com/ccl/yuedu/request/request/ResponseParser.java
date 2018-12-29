@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.ccl.yuedu.bean.BookCategoryBean;
-import com.ccl.yuedu.bean.BookInfoBean;
+import com.ccl.yuedu.bean.BookCategoryInfoBean;
 import com.ccl.yuedu.bean.PeronalInfo;
 import com.ccl.yuedu.constans.BookCategoryConstants;
 
@@ -59,8 +59,13 @@ public class ResponseParser {
         return allBookCategoryMap;
     }
 
-    public static List<BookInfoBean> parseBookList(String result) {
+    public static List<BookCategoryInfoBean> parseBookList(String result) {
         com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(result);
-        return JSONArray.parseArray(jsonObject.getString("books"), BookInfoBean.class);
+        return JSONArray.parseArray(jsonObject.getString("books"), BookCategoryInfoBean.class);
+    }
+
+    public static List<BookCategoryInfoBean> parseBookDetail(String result) {
+        com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(result);
+        return JSONArray.parseArray(jsonObject.getString("books"), BookCategoryInfoBean.class);
     }
 }

@@ -12,4 +12,6 @@ public interface Urls {
 
     String GET_BOOK_LIST_BY_CATEGORY = "/book/by-categories"; // 根据分类获取书籍列表
 
+    String GET_BOOK_DETAIL= "/book/{bookId}"; // 获取书籍详情
+
 }

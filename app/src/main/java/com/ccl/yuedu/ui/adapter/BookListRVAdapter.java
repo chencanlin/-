@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.ccl.yuedu.R;
 import com.ccl.yuedu.YDApplication;
-import com.ccl.yuedu.bean.BookInfoBean;
+import com.ccl.yuedu.bean.BookCategoryInfoBean;
 import com.ccl.yuedu.constans.BookCategoryConstants;
 import com.ccl.yuedu.ui.activity.BookCategoryListActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -21,14 +21,14 @@ import java.util.List;
 /**
  * Created by chencanlin on 2018/12/26 10:24
  */
-public class BookListRVAdapter extends BaseQuickAdapter<BookInfoBean, BaseViewHolder> {
+public class BookListRVAdapter extends BaseQuickAdapter<BookCategoryInfoBean, BaseViewHolder> {
 
-    public BookListRVAdapter(@Nullable List<BookInfoBean> data) {
+    public BookListRVAdapter(@Nullable List<BookCategoryInfoBean> data) {
         super(R.layout.layout_book_list_rv_item, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, BookInfoBean item) {
+    protected void convert(BaseViewHolder helper, BookCategoryInfoBean item) {
         ImageView mIvCover = helper.getView(R.id.iv_cover);
         if (TextUtils.isEmpty(item.getCover())) {
             Picasso.get().load(R.drawable.icon_default_cover).into(mIvCover);

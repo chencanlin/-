@@ -14,7 +14,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.ccl.yuedu.R;
 import com.ccl.yuedu.base.BaseAppCompatActivity;
 import com.ccl.yuedu.bean.BookCategoryFilterBean;
-import com.ccl.yuedu.bean.BookInfoBean;
+import com.ccl.yuedu.bean.BookCategoryInfoBean;
 import com.ccl.yuedu.constans.BookCategoryConstants;
 import com.ccl.yuedu.constans.CommonExtraKey;
 import com.ccl.yuedu.message.CustomMessageInfo;
@@ -63,7 +63,7 @@ public class BookCategoryListActivity extends BaseAppCompatActivity implements V
 
 
     private BookCategoryFilterBean mBookCategoryFilterBean;
-    private List<BookInfoBean> mBookInfoBeanList = new ArrayList<>();
+    private List<BookCategoryInfoBean> mBookCategoryInfoBeanList = new ArrayList<>();
     private BookListRVAdapter mBookListRVAdapter;
     private String currentSortType = BookCategoryConstants.BookCategoryFilter.HOT;
     private List<FloatingActionButton> mFloatingActionButtonList = new ArrayList<>();
@@ -99,7 +99,7 @@ public class BookCategoryListActivity extends BaseAppCompatActivity implements V
 
 //        mLLSort.setOnClickListener(this);
 
-        mBookListRVAdapter = new BookListRVAdapter(mBookInfoBeanList);
+        mBookListRVAdapter = new BookListRVAdapter(mBookCategoryInfoBeanList);
         mBookListRVAdapter.setLoadMoreView(new SimpleLoadMoreView());
         mBookListRVAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
@@ -113,6 +113,12 @@ public class BookCategoryListActivity extends BaseAppCompatActivity implements V
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRvBookList.setLayoutManager(linearLayoutManager);
         mRvBookList.setAdapter(mBookListRVAdapter);
+        mBookListRVAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                BookDetailActivity.start(BookCategoryListActivity.this, mBookCategoryInfoBeanList.get(position));
+            }
+        });
 
         mFloatingActionButtonList.add(mFabFollower);
         mFloatingActionButtonList.add(mFabUpdate);
@@ -184,10 +190,10 @@ public class BookCategoryListActivity extends BaseAppCompatActivity implements V
     protected void onNotifyMainThread(CustomMessageInfo customMessageInfo) {
         switch (customMessageInfo.getMessageCode()) {
             case MessageCode.GET_BOOK_LIST_BY_CATEGORY_SUCCEED:
-                List<BookInfoBean> data = (List<BookInfoBean>) customMessageInfo.getData();
+                List<BookCategoryInfoBean> data = (List<BookCategoryInfoBean>) customMessageInfo.getData();
                 if (needClearData) {
                     needClearData = false;
-                    mBookInfoBeanList.clear();
+                    mBookCategoryInfoBeanList.clear();
                     mBookListRVAdapter.notifyDataSetChanged();
                 }
                 if (data != null && data.size() > 0) {

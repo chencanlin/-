@@ -16,7 +16,7 @@ import lombok.Data;
  * Created by chencanlin on 2018/12/26 10:25
  */
 @Data
-public class BookInfoBean implements Parcelable {
+public class BookCategoryInfoBean implements Parcelable {
     public String id;
     public String title;
     public String author;
@@ -80,10 +80,10 @@ public class BookInfoBean implements Parcelable {
         dest.writeStringList(this.tags);
     }
 
-    public BookInfoBean() {
+    public BookCategoryInfoBean() {
     }
 
-    protected BookInfoBean(Parcel in) {
+    protected BookCategoryInfoBean(Parcel in) {
         this.id = in.readString();
         this.title = in.readString();
         this.author = in.readString();
@@ -102,15 +102,15 @@ public class BookInfoBean implements Parcelable {
         this.tags = in.createStringArrayList();
     }
 
-    public static final Creator<BookInfoBean> CREATOR = new Creator<BookInfoBean>() {
+    public static final Creator<BookCategoryInfoBean> CREATOR = new Creator<BookCategoryInfoBean>() {
         @Override
-        public BookInfoBean createFromParcel(Parcel source) {
-            return new BookInfoBean(source);
+        public BookCategoryInfoBean createFromParcel(Parcel source) {
+            return new BookCategoryInfoBean(source);
         }
 
         @Override
-        public BookInfoBean[] newArray(int size) {
-            return new BookInfoBean[size];
+        public BookCategoryInfoBean[] newArray(int size) {
+            return new BookCategoryInfoBean[size];
         }
     };
 }

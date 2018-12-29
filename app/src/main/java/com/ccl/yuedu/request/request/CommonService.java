@@ -1,7 +1,7 @@
 package com.ccl.yuedu.request.request;
 
 import com.ccl.yuedu.bean.BookCategoryBean;
-import com.ccl.yuedu.bean.BookInfoBean;
+import com.ccl.yuedu.bean.BookCategoryInfoBean;
 import com.ccl.yuedu.bean.PeronalInfo;
 import com.ccl.yuedu.constans.Domain;
 import com.ccl.yuedu.message.EventBusUtil;
@@ -79,10 +79,32 @@ public class CommonService {
             public void onSucceed(String response) {
                 boolean requestSucceed = ResponseParser.isRequestSucceed(response);
                 if (requestSucceed) {
-                    List<BookInfoBean> bookInfoBeanList = ResponseParser.parseBookList(response);
-                    EventBusUtil.sendEvent(MessageCode.GET_BOOK_LIST_BY_CATEGORY_SUCCEED, bookInfoBeanList);
+                    List<BookCategoryInfoBean> bookCategoryInfoBeanList = ResponseParser.parseBookList(response);
+                    EventBusUtil.sendEvent(MessageCode.GET_BOOK_LIST_BY_CATEGORY_SUCCEED, bookCategoryInfoBeanList);
                 } else {
                     EventBusUtil.sendEvent(MessageCode.GET_BOOK_LIST_BY_CATEGORY_FAILED);
+                }
+            }
+        });
+    }
+
+    public static void getBookDetail(String bookId) {
+        CommonServiceApi api = HttpUtil.createApi(CommonServiceApi.class, Domain.DOMAIN_ZHUISHUSHENQI);
+        Call<ResponseBody> bookDetail = api.getBookDetail(bookId);
+        HttpUtil.sendRequest(bookDetail, new OnSendRequestListener() {
+            @Override
+            public void onFailed(String message) {
+                EventBusUtil.sendEvent(MessageCode.GET_BOOK_DETAIL_FAILED, null, message);
+            }
+
+            @Override
+            public void onSucceed(String response) {
+                boolean requestSucceed = ResponseParser.isRequestSucceed(response);
+                if (requestSucceed) {
+                    List<BookCategoryInfoBean> bookCategoryInfoBeanList = ResponseParser.parseBookList(response);
+                    EventBusUtil.sendEvent(MessageCode.GET_BOOK_DETAIL_SUCCEED, bookCategoryInfoBeanList);
+                } else {
+                    EventBusUtil.sendEvent(MessageCode.GET_BOOK_DETAIL_FAILED);
                 }
             }
         });

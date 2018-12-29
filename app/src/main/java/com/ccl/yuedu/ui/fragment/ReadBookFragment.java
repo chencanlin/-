@@ -114,9 +114,9 @@ public class ReadBookFragment extends BaseFragment {
 
     private void initData() {
         mFragmentList.add(new BookCategoryFragment());
-        mFragmentList.add(new BookCategoryFragment());
-        mFragmentList.add(new BookCategoryFragment());
-        mFragmentList.add(new BookCategoryFragment());
+//        mFragmentList.add(new BookCategoryFragment());
+//        mFragmentList.add(new BookCategoryFragment());
+//        mFragmentList.add(new BookCategoryFragment());
     }
 
     private void initView() {

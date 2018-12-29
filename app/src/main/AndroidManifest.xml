@@ -28,9 +28,9 @@
             android:name=".ui.activity.QQEntityActivity"
             android:theme="@style/TransparentActivityStyle"/>
         <activity android:name=".ui.activity.BookCategoryListActivity"/>
+        <activity android:name=".ui.activity.BookDetailActivity"/>
 
-
-        <!--腾讯开放Sdk-->
+        <!-- 腾讯开放Sdk -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -49,7 +49,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <!--腾讯开放Sdk-->
+        <!-- 腾讯开放Sdk -->
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import java.util.Map;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -75,4 +76,7 @@ public interface CommonServiceApi {
 
     @GET(Urls.GET_BOOK_LIST_BY_CATEGORY)
     Call<ResponseBody> getBookListByCategory(@QueryMap Map<String, String> paramsMap);
+
+    @GET(Urls.GET_BOOK_DETAIL)
+    Call<ResponseBody> getBookDetail(@Path(value = "bookId") String bookId);
 }
