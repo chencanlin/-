@@ -1,9 +1,11 @@
-package com.ccl.yuedu.ui;
+package com.ccl.yuedu.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,13 +29,20 @@ import com.ccl.yuedu.base.BaseAppCompatActivity;
 import com.ccl.yuedu.bean.PeronalInfo;
 import com.ccl.yuedu.constans.CommonExtraKey;
 import com.ccl.yuedu.utils.BitmapUtil;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.lang.reflect.Method;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends BaseAppCompatActivity implements View.OnClickListener {
 
-    private DrawerLayout mDrawerLayout;
-    private NavigationView mNvMain;
+    @BindView(R.id.drawer_layout)
+    public DrawerLayout mDrawerLayout;
+    @BindView(R.id.nv_main)
+    public NavigationView mNvMain;
     private View mHeadLayout;
     private TextView mTvIntro;
     private ImageView mIvAvatar;
@@ -47,6 +56,7 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             BarUtils.setStatusBarAlpha(this, 36);
         }
@@ -60,16 +70,41 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
     }
 
     private void setView() {
-        Bitmap bitmap = BitmapUtil.rsBlur(this, BitmapFactory.decodeResource(getResources(), R.drawable.shuijingshinv), 25, 1 / 4f);
-        mHeadLayout.setBackground(new BitmapDrawable(bitmap));
+//        Bitmap bitmap = BitmapUtil.rsBlur(this, BitmapFactory.decodeResource(getResources(), R.drawable.shuijingshinv), 25, 1 / 4f);
+//        mHeadLayout.setBackground(new BitmapDrawable(bitmap));
+        if (mPersonalInfo != null) {
+            try {
+                Picasso.get().load(Uri.parse(mPersonalInfo.avatarUrl)).into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        mIvAvatar.setImageBitmap(bitmap);
+                        Bitmap bgBitmap = BitmapUtil.rsBlur(MainActivity.this, bitmap, 25, 4);
+                        mHeadLayout.setBackground(new BitmapDrawable(bgBitmap));
+                    }
 
-        mTvName.setText(mPersonalInfo.name);
+                    @Override
+                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+                        mIvAvatar.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.avatar_default));
+                        Bitmap bgBitmap = BitmapUtil.rsBlur(MainActivity.this, BitmapFactory.decodeResource(getResources(), R.drawable.shuijingshinv), 25, 1 / 4f);
+                        mHeadLayout.setBackground(new BitmapDrawable(bgBitmap));
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            mTvName.setText(mPersonalInfo.name);
+        }
     }
 
     private void initData() {
         Intent intent = getIntent();
-        if(intent != null){
-            mPersonalInfo = intent.getParcelableExtra(CommonExtraKey.EXTRA_PERSONAL_KEY_INFO);
+        if (intent != null) {
+            mPersonalInfo = intent.getParcelableExtra(CommonExtraKey.EXTRA_KEY_PERSONAL_INFO);
         }
     }
 
@@ -107,9 +142,6 @@ public class MainActivity extends BaseAppCompatActivity implements View.OnClickL
     }
 
     private void initDrawerView() {
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        mNvMain = findViewById(R.id.nv_main);
-
         mHeadLayout = mNvMain.getHeaderView(0);
         Bitmap bitmap = BitmapUtil.rsBlur(this, BitmapFactory.decodeResource(getResources(), R.drawable.shuijingshinv), 25, 1 / 4f);
         mHeadLayout.setBackground(new BitmapDrawable(bitmap));

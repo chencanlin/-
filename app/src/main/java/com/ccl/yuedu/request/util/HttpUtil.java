@@ -3,6 +3,7 @@ package com.ccl.yuedu.request.util;
 
 import android.support.annotation.NonNull;
 
+import com.ccl.yuedu.constans.Domain;
 import com.ccl.yuedu.request.OnSendRequestListener;
 
 import java.io.IOException;
@@ -12,7 +13,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -22,13 +22,24 @@ public class HttpUtil {
 
     public static Retrofit getRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl("https://graph.qq.com")
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Domain.DOMAIN)
+//                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static Retrofit getRetrofit(String host) {
+        return new Retrofit.Builder()
+                .baseUrl(host)
+//                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
     public static <T> T createApi(Class<T> t) {
         return getRetrofit().create(t);
+    }
+
+    public static <T> T createApi(Class<T> t, String host) {
+        return getRetrofit(host).create(t);
     }
 
     /*

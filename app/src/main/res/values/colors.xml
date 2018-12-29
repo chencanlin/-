@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF5722</color>
+    <!--deep orange-->
+    <!--<color name="colorPrimary">#FF5722</color>
     <color name="colorPrimaryDark">#E64A19</color>
+    <color name="colorAccent">#D81B60</color>-->
+    <!--blue-->
+    <!--<color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#D81B60</color>-->
+    <!--orange-->
+    <color name="colorPrimary">#FF9800</color> <!--500-->
+    <color name="colorPrimaryLight">#FFCC80</color> <!--200-->
+    <color name="colorPrimaryDark">#F67C00</color> <!--700-->
     <color name="colorAccent">#D81B60</color>
+    <!--green-->
+    <!--<color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryLight">#A5D6A7</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#D81B60</color>-->
+
+    <color name="common_line_color">#FFE0B2</color>
+    <color name="common_content_text">#676767</color>
+    <color name="common_title_text">#212121</color>
+    <color name="common_gray_text">#9e9e9e</color>
+    <color name="common_red">#EA5251</color>
+    <color name="common_bg_red">#FBEBEB</color>
+
 
     <color name="transparent">#00000000</color>
     <color name="common_mask_bg_color">#4CAF50</color>
     <color name="colorBluePrimary">#2196F3</color>
     <color name="white">#FFFFFF</color>
     <color name="navigation_icon_color">#707070</color>
+
 </resources>

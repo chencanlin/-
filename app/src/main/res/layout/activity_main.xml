@@ -24,26 +24,28 @@
                 android:layout_height="?actionBarSize"
                 app:contentInsetEnd="0dp"
                 app:contentInsetStart="0dp"
-                app:popupTheme="@style/ToolbarPopupTheme"
-                app:titleTextColor="@color/white"
                 app:navigationIcon="@drawable/icon_slidingmenu"
-                app:title="@string/app_name_chinese">
+                app:popupTheme="@style/ToolbarPopupTheme"
+                app:title="@string/app_name_chinese"
+                app:titleTextColor="@color/white">
 
             </android.support.v7.widget.Toolbar>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="sdjf1"/>
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            >
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        </android.support.v4.widget.NestedScrollView>
+            <fragment
+                android:id="@+id/fragment_read_book"
+                android:name="com.ccl.yuedu.ui.fragment.ReadBookFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </FrameLayout>
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -55,8 +57,8 @@
         android:background="@color/white"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/layout_main_header"
-        app:itemTextColor="@android:color/black"
         app:itemIconTint="@color/navigation_icon_color"
+        app:itemTextColor="@android:color/black"
         app:menu="@menu/menu_main_drawer_navigator"/>
 
 </android.support.v4.widget.DrawerLayout>

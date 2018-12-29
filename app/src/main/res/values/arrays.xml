@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="book_list_sort_array">
+        <item>按人气</item>
+        <item>按更新</item>
+        <item>按留存</item>
+        <item>按完结</item>
+    </string-array>
+</resources>

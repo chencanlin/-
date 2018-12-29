@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/book_category_male"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"/>
+
+        <include
+            layout="@layout/common_line"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_book_category_male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/book_category_female"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"/>
+
+        <include
+            layout="@layout/common_line"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_book_category_female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/book_category_children"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"/>
+
+        <include
+            layout="@layout/common_line"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_book_category_children"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/book_category_press"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"/>
+
+        <include
+            layout="@layout/common_line"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_book_category_press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:scrollbars="none">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

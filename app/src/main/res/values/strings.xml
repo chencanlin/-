@@ -5,7 +5,21 @@
     <!--LoginActivity-->
     <string name="login_subtitle">静享读书的愉悦</string>
     <string name="login_qq">QQ登录</string>
-    
+
     <!--MainActivity-->
     <string name="main_intro">简介：%1$s</string>
+
+    <!--BookCategoryFragment-->
+    <string name="book_category_male">男生</string>
+    <string name="book_category_female">女生</string>
+    <string name="book_category_children">儿童</string>
+    <string name="book_category_press">出版社</string>
+
+    <!--BookListActivity-->
+    <string name="book_list_lately_follower">%1$s人气</string>
+    <string name="book_list_reputation">%1$s留存</string>
+    <string name="book_list_sort_follower">按人气</string>
+    <string name="book_list_sort_reputation">按留存</string>
+    <string name="book_list_sort_update">按更新</string>
+    <string name="book_list_sort_over">按完结</string>
 </resources>

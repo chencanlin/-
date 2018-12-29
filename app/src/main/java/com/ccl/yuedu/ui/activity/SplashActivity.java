@@ -1,4 +1,4 @@
-package com.ccl.yuedu.ui;
+package com.ccl.yuedu.ui.activity;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;

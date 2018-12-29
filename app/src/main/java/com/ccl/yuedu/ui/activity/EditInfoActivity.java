@@ -1,4 +1,4 @@
-package com.ccl.yuedu.ui;
+package com.ccl.yuedu.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

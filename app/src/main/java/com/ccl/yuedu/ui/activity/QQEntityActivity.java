@@ -1,4 +1,4 @@
-package com.ccl.yuedu.ui;
+package com.ccl.yuedu.ui.activity;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -17,6 +17,7 @@ import com.ccl.yuedu.R;
 import com.ccl.yuedu.base.BaseAppCompatActivity;
 import com.ccl.yuedu.constans.QQConstants;
 import com.ccl.yuedu.message.CustomMessageInfo;
+import com.ccl.yuedu.message.EventBusUtil;
 import com.ccl.yuedu.message.MessageCode;
 import com.ccl.yuedu.request.request.CommonService;
 import com.tencent.tauth.IUiListener;
@@ -188,6 +189,13 @@ public class QQEntityActivity extends BaseAppCompatActivity {
         }.start();*/
     }
 
+    private void showMask(boolean flag) {
+        if (mLLMask == null) {
+            mLLMask = findViewById(R.id.ll_mask);
+        }
+        mLLMask.setVisibility(flag ? View.VISIBLE : View.GONE);
+    }
+
     public class BaseUiListener implements IUiListener {
         @Override
         public void onComplete(Object o) {
@@ -196,12 +204,12 @@ public class QQEntityActivity extends BaseAppCompatActivity {
 
         @Override
         public void onError(UiError uiError) {
-
+            finish();
         }
 
         @Override
         public void onCancel() {
-
+            finish();
         }
     }
 
@@ -211,11 +219,16 @@ public class QQEntityActivity extends BaseAppCompatActivity {
     }
 
     @Override
-    protected void onNotifyMainThread(CustomMessageInfo customMessageInfo) {
+    protected void onNotifyMainThread(final CustomMessageInfo customMessageInfo) {
         switch (customMessageInfo.getMessageCode()) {
             case MessageCode.GET_QQ_USER_INFO_SUCCEED:
-                mLLMask.setVisibility(View.GONE);
                 finish();
+                getWindow().getDecorView().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        EventBusUtil.sendEvent(MessageCode.LOGIN_SUCCEED, customMessageInfo.getData());
+                    }
+                }, 250);
                 break;
         }
     }

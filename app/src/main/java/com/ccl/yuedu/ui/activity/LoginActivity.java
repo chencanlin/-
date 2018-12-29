@@ -1,4 +1,4 @@
-package com.ccl.yuedu.ui;
+package com.ccl.yuedu.ui.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -150,7 +150,7 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
 
     private void startMainActivity(PeronalInfo peronalInfo) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(CommonExtraKey.EXTRA_PERSONAL_KEY_INFO, peronalInfo);
+        intent.putExtra(CommonExtraKey.EXTRA_KEY_PERSONAL_INFO, peronalInfo);
         startActivity(intent);
     }
 
@@ -162,7 +162,7 @@ public class LoginActivity extends BaseAppCompatActivity implements View.OnClick
     @Override
     protected void onNotifyMainThread(CustomMessageInfo customMessageInfo) {
         switch (customMessageInfo.getMessageCode()) {
-            case MessageCode.GET_QQ_USER_INFO_SUCCEED:
+            case MessageCode.LOGIN_SUCCEED:
                 PeronalInfo peronalInfo = (PeronalInfo) customMessageInfo.getData();
                 startMainActivity(peronalInfo);
                 finish();

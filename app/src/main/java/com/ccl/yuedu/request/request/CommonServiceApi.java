@@ -3,10 +3,13 @@ package com.ccl.yuedu.request.request;
 
 import com.ccl.yuedu.request.constant.Urls;
 
+import java.util.Map;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by chencanlin on 2018/9/25 15:51
@@ -15,7 +18,7 @@ public interface CommonServiceApi {
 
     /*// 接口请求测试
     @GET(Urls.test_interface)
-    Call<ResponseBody> testRequest();
+    Call<ResponseBody> qqLoginGetUserInfo();
 
     @FormUrlEncoded
     @Headers("Cookie:ZHBSESSID=d71d355c19fef3098b54e5d3aed30de5")
@@ -65,5 +68,11 @@ public interface CommonServiceApi {
 //    @Headers("Content-type:application/json;charset=utf-8")
 
     @GET(Urls.GET_QQ_USER_INFO)
-    Call<ResponseBody> testRequest(@Query("oauth_consumer_key") String appId, @Query("access_token") String accessToken, @Query("openid") String openId, @Query("format") String format);
+    Call<ResponseBody> qqLoginGetUserInfo(@Query("oauth_consumer_key") String appId, @Query("access_token") String accessToken, @Query("openid") String openId, @Query("format") String format);
+
+    @GET(Urls.GET_BOOK_ALL_CATEGORY)
+    Call<ResponseBody> getBookAllCategory();
+
+    @GET(Urls.GET_BOOK_LIST_BY_CATEGORY)
+    Call<ResponseBody> getBookListByCategory(@QueryMap Map<String, String> paramsMap);
 }
