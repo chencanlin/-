@@ -1,7 +1,10 @@
 package com.ccl.yuedu.request.request;
 
+import android.text.TextUtils;
+
 import com.ccl.yuedu.bean.BookCategoryBean;
 import com.ccl.yuedu.bean.BookCategoryInfoBean;
+import com.ccl.yuedu.bean.BookDetailInfoBean;
 import com.ccl.yuedu.bean.PeronalInfo;
 import com.ccl.yuedu.constans.Domain;
 import com.ccl.yuedu.message.EventBusUtil;
@@ -99,10 +102,9 @@ public class CommonService {
 
             @Override
             public void onSucceed(String response) {
-                boolean requestSucceed = ResponseParser.isRequestSucceed(response);
-                if (requestSucceed) {
-                    List<BookCategoryInfoBean> bookCategoryInfoBeanList = ResponseParser.parseBookList(response);
-                    EventBusUtil.sendEvent(MessageCode.GET_BOOK_DETAIL_SUCCEED, bookCategoryInfoBeanList);
+                if (!TextUtils.isEmpty(response)) {
+                    BookDetailInfoBean bookDetailInfoBean = ResponseParser.parseBookDetail(response);
+                    EventBusUtil.sendEvent(MessageCode.GET_BOOK_DETAIL_SUCCEED, bookDetailInfoBean);
                 } else {
                     EventBusUtil.sendEvent(MessageCode.GET_BOOK_DETAIL_FAILED);
                 }

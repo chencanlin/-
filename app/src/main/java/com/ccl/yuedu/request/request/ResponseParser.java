@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.ccl.yuedu.bean.BookCategoryBean;
 import com.ccl.yuedu.bean.BookCategoryInfoBean;
+import com.ccl.yuedu.bean.BookDetailInfoBean;
 import com.ccl.yuedu.bean.PeronalInfo;
 import com.ccl.yuedu.constans.BookCategoryConstants;
 
@@ -64,8 +65,7 @@ public class ResponseParser {
         return JSONArray.parseArray(jsonObject.getString("books"), BookCategoryInfoBean.class);
     }
 
-    public static List<BookCategoryInfoBean> parseBookDetail(String result) {
-        com.alibaba.fastjson.JSONObject jsonObject = JSON.parseObject(result);
-        return JSONArray.parseArray(jsonObject.getString("books"), BookCategoryInfoBean.class);
+    public static BookDetailInfoBean parseBookDetail(String result) {
+        return JSONArray.parseObject(result, BookDetailInfoBean.class);
     }
 }

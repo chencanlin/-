@@ -5,6 +5,14 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 android {
+    signingConfigs {
+        release {
+            keyAlias 'androidsignkey'
+            keyPassword 'chencanlin'
+            storeFile file('C:/Users/chenc/Desktop/接口分析及android适配问题/驿阳指/yuedu_sign.jks')
+            storePassword 'chencanlin'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.ccl.yuedu"
@@ -26,10 +34,11 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['jniLibs']
